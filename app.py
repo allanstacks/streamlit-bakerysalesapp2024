@@ -1,3 +1,4 @@
+
 import streamlit as st
 import numpy as numpy
 import pandas as pd
@@ -75,3 +76,20 @@ except ValueError as e:
         """ Error """ % e.reason
     )    
 
+# sales analysis
+try:
+    if len(filtered_table) > 0:
+             daily_sales = df.groupby('date')['sales'].sum()
+    else:
+         daily_sales = df.groupby('date')['sales'].sum() 
+    daily_sales = df.groupby('date')['sales'].sum()
+    daily_sales_df = daily_sales.reset_index().rename(columns={'sales':"total sales"})
+    ax = daily_sales_df.plot.area(x = 'date'
+                                  y='total sales')
+    st.area_chart(daily_sales_df,
+                        x = 'date'
+                        y = 'total sales')
+except ValueError as e:
+     st.error(
+         """Error:""" % e.reason   
+     )                 
