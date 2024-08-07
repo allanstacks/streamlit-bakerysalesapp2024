@@ -87,7 +87,7 @@ try:
     ax = daily_sales_df.plot.area(x = 'date',
                                   y='total sales')
     st.area_chart(daily_sales_df,
-                        x = 'date'
+                        x = 'date',
                         y = 'total sales')
 except ValueError as e:
      st.error(
